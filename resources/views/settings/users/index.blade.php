@@ -31,11 +31,15 @@
                     <td class="px-4 py-3 text-sm leading-5 text-gray-900">{{ $user->name }}</td>
                     <td class="px-4 py-3 text-sm leading-5 text-gray-900">{{ $user->email }}</td>
                     <td class="px-4 py-3 text-sm leading-5 text-gray-500">
+                        @if($user->is_god)
+                            <span class="text-black">No actions is authorized</span>
+                        @else
                         <form class="inline-flex ml-2" action="{{route('users.destroy', $user->id)}}" method="post">
                             @csrf
                             @method('DELETE')
                             <button type="button" onclick="confirm('Are you sur ?') ? form.submit() : null" class="text-red-600 hover:text-red-900">Delete</button>
                         </form>
+                        @endif
                     </td>
                 </tr>
             @endforeach
