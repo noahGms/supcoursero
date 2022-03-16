@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('path');
             $table->foreignId('exercise_id')->constrained()->cascadeOnDelete();
             $table->foreignId('user_id')->constrained()->cascadeOnDelete();
+            $table->foreignId('exercise_file_status_id')->constrained(); // TODO: try to setNullOnDelete()
             $table->timestamps();
         });
     }

@@ -21,4 +21,9 @@ class ExerciseFile extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    public function status(): BelongsTo
+    {
+        return $this->belongsTo(ExerciseFileStatus::class, 'exercise_file_status_id', 'id');
+    }
 }

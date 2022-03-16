@@ -71,13 +71,14 @@
             <tr>
                 <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100">Name</th>
                 <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100">Exercise</th>
+                <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100">Status</th>
                 <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100 rounded-tr rounded-br">Actions</th>
             </tr>
             </thead>
             <tbody>
             @if($exerciseFiles->isEmpty())
                 <tr>
-                    <td colspan="3" class="py-3 text-center">
+                    <td colspan="4" class="py-3 text-center">
                         <div class="bg-indigo-700 border text-white px-4 py-3 rounded relative" role="alert">
                             <strong class="font-bold">No uploads found.</strong>
                         </div>
@@ -88,6 +89,11 @@
                 <tr>
                     <td class="px-4 py-3 text-sm leading-5 text-gray-900">{{ $file->name }}</td>
                     <td class="px-4 py-3 text-sm leading-5 text-gray-900">{{ $file->exercise->name }}</td>
+                    <td class="px-4 py-3 text-sm leading-5 text-gray-900">
+                        <span class="px-1 py-1 rounded" style="background-color: {{$file->status->color}};">
+                            {{ $file->status->color }}
+                        </span>
+                    </td>
                     <td class="px-4 py-3 text-sm leading-5 text-gray-900">
                         <a href="{{route('exercise-files.download', $file->id)}}">
                             <i class="fa-solid fa-download"></i>

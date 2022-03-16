@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\ExerciseFileRequest;
 use App\Models\ExerciseFile;
+use App\Models\ExerciseFileStatus;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
@@ -29,6 +30,7 @@ class ExerciseFileController extends Controller
             'name' => $file->getClientOriginalName(),
             'path' => $file->hashName(),
             'user_id' => Auth::user()->id,
+            'exercise_file_status_id' => ExerciseFileStatus::STATUS_NOT_SUBMITTED,
         ]);
 
         return redirect()->back();
