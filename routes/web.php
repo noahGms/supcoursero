@@ -26,6 +26,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::resource('languages', App\Http\Controllers\Settings\LanguageController::class)->except(['show']);
         Route::resource('courses', App\Http\Controllers\Settings\CourseController::class)->except(['show']);
         Route::resource('exercises', App\Http\Controllers\Settings\ExerciseController::class)->except(['show']);
+        Route::resource('users', App\Http\Controllers\Settings\UserController::class)->only(['index', 'destroy']);
     });
 
 
