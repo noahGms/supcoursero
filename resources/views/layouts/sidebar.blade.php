@@ -21,6 +21,11 @@
             </a>
         </li>
         <li class="relative">
+            <a href="{{route('exercise-file-statuses.index')}}" class="flex items-center text-sm py-4 px-6 h-12 overflow-hidden text-gray-700 text-ellipsis whitespace-nowrap hover:text-gray-900 hover:bg-gray-100 transition duration-300 ease-in-out {{request()->routeIs('exercise-file-statuses.index') ? 'text-gray-900 bg-gray-100' : ''}}"">
+            Exercise file statuses
+            </a>
+        </li>
+        <li class="relative">
             <a href="{{route('users.index')}}" class="flex items-center text-sm py-4 px-6 h-12 overflow-hidden text-gray-700 text-ellipsis whitespace-nowrap hover:text-gray-900 hover:bg-gray-100 transition duration-300 ease-in-out {{request()->routeIs('users.index') ? 'text-gray-900 bg-gray-100' : ''}}"">
                 Users
             </a>

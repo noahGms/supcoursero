@@ -31,6 +31,8 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('/exercises/{exercise}/download', [App\Http\Controllers\Settings\ExerciseController::class, 'download'])->name('exercises.download');
         Route::resource('exercises', App\Http\Controllers\Settings\ExerciseController::class)->except(['show']);
 
+        Route::resource('exercise-file-statuses', App\Http\Controllers\Settings\ExerciseFileStatusController::class)->except(['show']);
+
         Route::resource('users', App\Http\Controllers\Settings\UserController::class)->only(['index', 'destroy']);
     });
 
