@@ -1,3 +1,9 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+    .text-error {
+        @apply text-red-500 text-sm font-medium leading-none mt-2;
+    }
+}

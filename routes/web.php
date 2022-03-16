@@ -13,4 +13,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home.index');
+Route::get('/login', [App\Http\Controllers\Auth\LoginController::class, 'index'])->name('login.index');
+Route::post('/login', [App\Http\Controllers\Auth\LoginController::class, 'login'])->name('login.login');
+Route::get('/register', [App\Http\Controllers\Auth\RegisterController::class, 'index'])->name('register.index');
+Route::post('/register', [App\Http\Controllers\Auth\RegisterController::class, 'register'])->name('register.register');
+
+Route::group(['middleware' => 'auth'], function () {
+    Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home.index');
+});
