@@ -5,7 +5,7 @@
             <h2 class="font-normal text-2xl leading-6 text-gray-800 ml-2">Supcoursero</h2>
         </a>
         <nav class="md:ml-auto flex flex-wrap items-center text-base justify-center">
-            <a href="{{route('settings.index')}}" class="mr-5 hover:text-gray-900">Settings</a>
+            <a href="{{route('settings.index')}}" class="mr-5 hover:text-gray-900 {{str_contains(request()->fullUrl(), '/settings') ? 'text-gray-900 font-bold' : ''}}">Settings</a>
         </nav>
         <form action="{{route('logout')}}" method="post">
             @csrf
