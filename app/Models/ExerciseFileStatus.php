@@ -10,4 +10,8 @@ class ExerciseFileStatus extends Model
     use HasFactory;
 
     protected $guarded = [];
+
+    public const STATUS_NOT_SUBMITTED = 1;
+    public const STATUS_PENDING = 2;
+    public const STATUS_SCORED = 3;
 }

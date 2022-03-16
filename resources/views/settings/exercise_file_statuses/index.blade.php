@@ -32,7 +32,9 @@
                 <tr>
                     <td class="px-4 py-3 text-sm leading-5 text-gray-500">{{ $status->id }}</td>
                     <td class="px-4 py-3 text-sm leading-5 text-gray-900">{{ $status->name }}</td>
-                    <td class="px-4 py-3 text-sm leading-5 text-gray-900">{{ $status->color }}</td>
+                    <td class="px-4 py-3 text-sm leading-5 text-gray-900">
+                        <span class="px-1 py-1 rounded" style="background-color: {{$status->color}};">{{ $status->color }}</span>
+                    </td>
                     <td class="px-4 py-3 text-sm leading-5 text-gray-500">
                         <a href="{{ route('exercise-file-statuses.edit', $status->id) }}" class="text-indigo-600 hover:text-indigo-900">Edit</a>
                         <form class="inline-flex ml-2" action="{{route('exercise-file-statuses.destroy', $status->id)}}" method="post">
