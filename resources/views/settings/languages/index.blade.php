@@ -30,7 +30,12 @@
                     <td class="px-4 py-3 text-sm leading-5 text-gray-500">{{ $language->id }}</td>
                     <td class="px-4 py-3 text-sm leading-5 text-gray-900">{{ $language->name }}</td>
                     <td class="px-4 py-3 text-sm leading-5 text-gray-500">
-                        <a href="{{ route('settings.language.edit', $language->id) }}" class="text-indigo-600 hover:text-indigo-900">Edit</a>
+                        <a href="{{ route('languages.edit', $language->id) }}" class="text-indigo-600 hover:text-indigo-900">Edit</a>
+                        <form class="inline-flex ml-2" action="{{route('languages.destroy', $language->id)}}" method="post">
+                            @csrf
+                            @method('DELETE')
+                            <button type="button" onclick="confirm('Are you sur ?') ? form.submit() : null" class="text-red-600 hover:text-red-900">Delete</button>
+                        </form>
                     </td>
                 </tr>
           @endforeach

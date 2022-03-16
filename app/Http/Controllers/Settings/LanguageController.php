@@ -3,10 +3,10 @@
 namespace App\Http\Controllers\Settings;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Settings\LanguageRequest;
 use App\Models\Language;
 use Illuminate\Contracts\View\View;
-use Illuminate\Http\Request;
-use Illuminate\Http\Response;
+use Illuminate\Http\RedirectResponse;
 
 class LanguageController extends Controller
 {
@@ -18,72 +18,64 @@ class LanguageController extends Controller
     public function index(): View
     {
         $languages = Language::all();
-        return view('settings.language.index', compact('languages'));
+        return view('settings.languages.index', compact('languages'));
     }
 
     /**
      * Show the form for creating a new resource.
      *
-     * @return Response
+     * @return View
      */
-    public function create()
+    public function create(): View
     {
-        //
+        return view('settings.languages.create');
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param Request $request
-     * @return Response
+     * @param LanguageRequest $request
+     * @return RedirectResponse
      */
-    public function store(Request $request)
+    public function store(LanguageRequest $request): RedirectResponse
     {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return Response
-     */
-    public function show($id)
-    {
-        //
+        Language::create($request->validated());
+        return redirect()->route('languages.index');
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
-     * @return Response
+     * @param Language $language
+     * @return View
      */
-    public function edit($id)
+    public function edit(Language $language): View
     {
-        //
+        return view('settings.languages.edit', compact('language'));
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param Request $request
-     * @param  int  $id
-     * @return Response
+     * @param LanguageRequest $request
+     * @param Language $language
+     * @return RedirectResponse
      */
-    public function update(Request $request, $id)
+    public function update(LanguageRequest $request, Language $language): RedirectResponse
     {
-        //
+        $language->update($request->validated());
+        return redirect()->route('languages.index');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
-     * @return Response
+     * @param Language $language
+     * @return RedirectResponse
      */
-    public function destroy($id)
+    public function destroy(Language $language): RedirectResponse
     {
-        //
+        $language->delete();
+        return redirect()->route('languages.index');
     }
 }
