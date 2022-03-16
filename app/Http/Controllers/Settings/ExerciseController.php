@@ -8,6 +8,8 @@ use App\Models\Course;
 use App\Models\Exercise;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\Storage;
+use Symfony\Component\HttpFoundation\StreamedResponse;
 
 class ExerciseController extends Controller
 {
@@ -41,7 +43,18 @@ class ExerciseController extends Controller
      */
     public function store(ExerciseRequest $request): RedirectResponse
     {
-        Exercise::create($request->validated());
+        $requestValidated = $request->validated();
+
+        $file = $request->file('model');
+        $file->store('public/exercises_models');
+
+        Exercise::create([
+            'name' => $requestValidated['name'],
+            'course_id' => $requestValidated['course_id'],
+            'model_name' => $file->getClientOriginalName(),
+            'model_path' => $file->hashName(),
+        ]);
+
         return redirect()->route('exercises.index');
     }
 
@@ -78,7 +91,21 @@ class ExerciseController extends Controller
      */
     public function destroy(Exercise $exercise): RedirectResponse
     {
+        Storage::delete('public/exercises_models/' . $exercise->model_path);
         $exercise->delete();
         return redirect()->route('exercises.index');
+    }
+
+    /**
+     * Download file from public storage.
+     *
+     * @param Exercise $exercise
+     * @return StreamedResponse
+     */
+    public function download(Exercise $exercise): StreamedResponse
+    {
+        return response()->streamDownload(function () use ($exercise) {
+            echo Storage::get('public/exercises_models/' . $exercise->model_path);
+        }, $exercise->model_name . '.' . $exercise->model_extension);
     }
 }

@@ -26,6 +26,7 @@ class ExerciseRequest extends FormRequest
         return [
             'name' => 'required|string|unique:exercises,name',
             'course_id' => 'required|integer|exists:courses,id',
+            'model' => 'required|max:2048',
         ];
     }
 }

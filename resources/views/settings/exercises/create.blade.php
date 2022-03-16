@@ -9,7 +9,7 @@
             <h1 class="text-xl mb-0">Add new exercise</h1>
         </div>
 
-        <form action="{{route('exercises.store')}}" method="post" class="h-full">
+        <form action="{{route('exercises.store')}}" enctype="multipart/form-data" method="post" class="h-full">
             @csrf
 
             <div class="mt-6">
@@ -37,6 +37,16 @@
                 </select>
                 @if($errors->has('course_id'))
                     <p class="text-error">{{ $errors->first('course_id') }}</p>
+                @endif
+            </div>
+
+            <div class="mt-6">
+                <label id="model" class="text-sm font-medium leading-none text-gray-800">
+                    Model
+                </label>
+                <input type="file" id="model" name="model" class="bg-gray-200 border rounded  text-xs font-medium leading-none text-gray-800 py-3 w-full pl-3 mt-2 @error('model') border-red-500 @enderror"/>
+                @if($errors->has('model'))
+                    <p class="text-error">{{ $errors->first('model') }}</p>
                 @endif
             </div>
 

@@ -16,6 +16,8 @@ return new class extends Migration
         Schema::create('exercises', function (Blueprint $table) {
             $table->id();
             $table->string('name')->unique();
+            $table->string('model_name');
+            $table->string('model_path');
             $table->foreignId('course_id')->constrained()->cascadeOnDelete();
             $table->timestamps();
         });
