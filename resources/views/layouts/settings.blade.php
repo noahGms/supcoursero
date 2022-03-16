@@ -26,11 +26,8 @@
         @include('layouts.header')
     @endauth
 
-    @auth()
+    <div class="flex">
         @include('layouts.sidebar')
-    @endauth
-
-    <div>
         @yield('content')
     </div>
     </body>
