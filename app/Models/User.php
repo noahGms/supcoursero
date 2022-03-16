@@ -20,6 +20,8 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'is_god',
+        'is_admin',
     ];
 
     /**
@@ -37,7 +39,10 @@ class User extends Authenticatable
      *
      * @var array<string, string>
      */
-    protected $casts = [];
+    protected $casts = [
+        'is_god' => 'boolean',
+        'is_admin' => 'boolean',
+    ];
 
     /**
      * @param $value
