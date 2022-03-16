@@ -24,6 +24,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::group(['prefix' => 'settings'], function () {
         Route::get('/', [App\Http\Controllers\Settings\SettingsController::class, 'index'])->name('settings.index');
         Route::resource('languages', App\Http\Controllers\Settings\LanguageController::class)->except(['show']);
+        Route::resource('courses', App\Http\Controllers\Settings\CourseController::class)->except(['show']);
     });
 
 
