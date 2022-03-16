@@ -4,7 +4,10 @@
     <div class="h-full bg-gradient-to-tl from-blue-400 to-indigo-900 w-full py-16 px-4">
         <form action="{{route('register.register')}}" method="post" class="h-full flex flex-col items-center justify-center">
             @csrf
-            <h1 class="text-white text-3xl font-bold uppercase">Supcoursero</h1>
+            <div class="flex title-font font-medium items-center text-white mb-4 md:mb-0">
+                @include('layouts.logo')
+                <h2 class="font-normal uppercase text-3xl leading-6 text-white ml-2">Supcoursero</h2>
+            </div>
 
             <div class="bg-white shadow rounded lg:w-1/3  md:w-1/2 w-full p-10 mt-16">
                 <p class="focus:outline-none text-2xl font-extrabold leading-6 text-gray-800">Create an account</p>

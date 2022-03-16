@@ -1,7 +1,7 @@
 <header class="text-gray-600 body-font shadow-lg">
     <div class="container-lg mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
         <a href="{{route('home.index')}}" class="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0">
-            <img class="cursor-pointer" src="https://tuk-cdn.s3.amazonaws.com/can-uploader/header-1-svg1.svg" alt="circle" />
+            @include('layouts.logo')
             <h2 class="font-normal text-2xl leading-6 text-gray-800 ml-2">Supcoursero</h2>
         </a>
         <nav class="md:ml-auto flex flex-wrap items-center text-base justify-center">
