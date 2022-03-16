@@ -1,5 +1,5 @@
 @extends('layouts.base')
 
 @section('content')
-  Welcome page
+  Home page
 @endsection
