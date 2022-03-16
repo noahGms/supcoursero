@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+Route::group([], function () {
+   Route::post('courses-by-language', [\App\Http\Controllers\Api\ApiController::class, 'getCoursesByLanguage']);
+   Route::post('exercises-by-course', [\App\Http\Controllers\Api\ApiController::class, 'getExercisesByCourse']);
 });

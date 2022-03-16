@@ -21,15 +21,16 @@
     </style>
 </head>
 
-<body>
-    @auth
-        @include('layouts.header')
-    @endauth
+    <body>
+        @auth
+            @include('layouts.header')
+        @endauth
 
-    <div class="flex">
-        @include('layouts.sidebar')
-        @yield('content')
-    </div>
+        <div class="flex">
+            @include('layouts.sidebar')
+            @yield('content')
+        </div>
+
+        <script src="{{asset('js/app.js')}}"></script>
     </body>
-
 </html>

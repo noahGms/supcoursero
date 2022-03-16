@@ -20,6 +20,8 @@ Route::post('/register', [App\Http\Controllers\Auth\RegisterController::class, '
 
 Route::group(['middleware' => 'auth'], function () {
     Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home.index');
+    Route::get('/exercise-files/{exerciseFile}/download', [App\Http\Controllers\ExerciseFileController::class, 'download'])->name('exercise-files.download');
+    Route::resource('/exercise-files', App\Http\Controllers\ExerciseFileController::class)->only(['store', 'destroy']);
 
     Route::group(['prefix' => 'settings', 'middleware' => 'isAdmin'], function () {
         Route::get('/', [App\Http\Controllers\Settings\SettingsController::class, 'index'])->name('settings.index');
