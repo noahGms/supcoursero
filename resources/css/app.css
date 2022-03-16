@@ -7,3 +7,7 @@
         @apply text-red-500 text-sm font-medium leading-none mt-2;
     }
 }
+
+.custom-height {
+    height: calc(100vh - 74px) !important;
+}
