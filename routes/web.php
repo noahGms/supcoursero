@@ -21,7 +21,7 @@ Route::post('/register', [App\Http\Controllers\Auth\RegisterController::class, '
 Route::group(['middleware' => 'auth'], function () {
     Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home.index');
 
-    Route::group(['prefix' => 'settings'], function () {
+    Route::group(['prefix' => 'settings', 'middleware' => 'isAdmin'], function () {
         Route::get('/', [App\Http\Controllers\Settings\SettingsController::class, 'index'])->name('settings.index');
         Route::resource('languages', App\Http\Controllers\Settings\LanguageController::class)->except(['show']);
         Route::resource('courses', App\Http\Controllers\Settings\CourseController::class)->except(['show']);
