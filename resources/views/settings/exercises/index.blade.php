@@ -34,14 +34,12 @@
                     <td class="px-4 py-3 text-sm leading-5 text-gray-500">{{ $exercise->id }}</td>
                     <td class="px-4 py-3 text-sm leading-5 text-gray-900">{{ $exercise->name }}</td>
                     <td class="px-4 py-3 text-sm leading-5 text-gray-900">{{ $exercise->course->name }}</td>
+                    <td class="px-4 py-3 text-sm leading-5 text-gray-900">{{ $exercise->model_name }}</td>
                     <td class="px-4 py-3 text-sm leading-5 text-gray-900">
-                        {{ $exercise->model_name }}
-                        <a class="ml-2" href="{{route('exercises.download', $exercise->id)}}">
+                        <a href="{{route('exercises.download', $exercise->id)}}">
                             <i class="fa-solid fa-download"></i>
                         </a>
-                    </td>
-                    <td class="px-4 py-3 text-sm leading-5 text-gray-500">
-                        <a href="{{ route('exercises.edit', $exercise->id) }}" class="text-indigo-600 hover:text-indigo-900">Edit</a>
+                        <a href="{{ route('exercises.edit', $exercise->id) }}" class="text-indigo-600 hover:text-indigo-900 ml-2">Edit</a>
                         <form class="inline-flex ml-2" action="{{route('exercises.destroy', $exercise->id)}}" method="post">
                             @csrf
                             @method('DELETE')
