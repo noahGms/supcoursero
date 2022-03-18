@@ -6,16 +6,17 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Settings\CourseRequest;
 use App\Models\Course;
 use App\Models\Language;
-use Illuminate\Http\Request;
+use Illuminate\Contracts\View\View;
+use Illuminate\Http\RedirectResponse;
 
 class CourseController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return View
      */
-    public function index()
+    public function index(): View
     {
         $courses = Course::all();
         return view('settings.courses.index', compact('courses'));
@@ -24,9 +25,9 @@ class CourseController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return View
      */
-    public function create()
+    public function create(): View
     {
         $languages = Language::all();
         return view('settings.courses.create', compact('languages'));
@@ -35,10 +36,10 @@ class CourseController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param CourseRequest $request
+     * @return RedirectResponse
      */
-    public function store(CourseRequest $request)
+    public function store(CourseRequest $request): RedirectResponse
     {
         Course::create($request->validated());
         return redirect()->route('courses.index')->with('success', 'Course created successfully.');
@@ -47,10 +48,10 @@ class CourseController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param Course $course
+     * @return View
      */
-    public function edit(Course $course)
+    public function edit(Course $course): View
     {
         $languages = Language::all();
         return view('settings.courses.edit', compact('course', 'languages'));
@@ -59,11 +60,11 @@ class CourseController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param CourseRequest $request
+     * @param Course $course
+     * @return RedirectResponse
      */
-    public function update(CourseRequest $request, Course $course)
+    public function update(CourseRequest $request, Course $course): RedirectResponse
     {
         $course->update($request->validated());
         return redirect()->route('courses.index')->with('success', 'Course updated successfully.');
@@ -72,10 +73,10 @@ class CourseController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param Course $course
+     * @return RedirectResponse
      */
-    public function destroy(Course $course)
+    public function destroy(Course $course): RedirectResponse
     {
         $course->delete();
         return redirect()->route('courses.index')->with('success', 'Course deleted successfully.');
