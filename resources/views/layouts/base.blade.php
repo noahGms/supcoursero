@@ -26,9 +26,11 @@
         @include('layouts.header')
       @endauth
 
-    <div>
+      <div>
         @yield('content')
-    </div>
+      </div>
+
+      @include('layouts.notification')
 
       <script src="{{asset('js/app.js')}}"></script>
   </body>
