@@ -41,7 +41,7 @@ class CourseController extends Controller
     public function store(CourseRequest $request)
     {
         Course::create($request->validated());
-        return redirect()->route('courses.index');
+        return redirect()->route('courses.index')->with('success', 'Course created successfully.');
     }
 
     /**
@@ -66,7 +66,7 @@ class CourseController extends Controller
     public function update(CourseRequest $request, Course $course)
     {
         $course->update($request->validated());
-        return redirect()->route('courses.index');
+        return redirect()->route('courses.index')->with('success', 'Course updated successfully.');
     }
 
     /**
@@ -78,6 +78,6 @@ class CourseController extends Controller
     public function destroy(Course $course)
     {
         $course->delete();
-        return redirect()->route('courses.index');
+        return redirect()->route('courses.index')->with('success', 'Course deleted successfully.');
     }
 }

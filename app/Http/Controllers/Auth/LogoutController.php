@@ -17,6 +17,6 @@ class LogoutController extends Controller
     {
         Auth::logout();
         $request->session()->invalidate();
-        return redirect()->route('login.login');
+        return redirect()->route('login.login')->with('success', 'Goodbye!');
     }
 }

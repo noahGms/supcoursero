@@ -40,7 +40,7 @@ class LanguageController extends Controller
     public function store(LanguageRequest $request): RedirectResponse
     {
         Language::create($request->validated());
-        return redirect()->route('languages.index');
+        return redirect()->route('languages.index')->with('success', 'Language created successfully.');
     }
 
     /**
@@ -64,7 +64,7 @@ class LanguageController extends Controller
     public function update(LanguageRequest $request, Language $language): RedirectResponse
     {
         $language->update($request->validated());
-        return redirect()->route('languages.index');
+        return redirect()->route('languages.index')->with('success', 'Language updated successfully.');
     }
 
     /**
@@ -76,6 +76,6 @@ class LanguageController extends Controller
     public function destroy(Language $language): RedirectResponse
     {
         $language->delete();
-        return redirect()->route('languages.index');
+        return redirect()->route('languages.index')->with('success', 'Language deleted successfully.');
     }
 }

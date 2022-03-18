@@ -55,7 +55,7 @@ class ExerciseController extends Controller
             'model_path' => $file->hashName(),
         ]);
 
-        return redirect()->route('exercises.index');
+        return redirect()->route('exercises.index')->with('success', 'Exercise created successfully');
     }
 
     /**
@@ -80,7 +80,7 @@ class ExerciseController extends Controller
     public function update(ExerciseRequest $request, Exercise $exercise): RedirectResponse
     {
         $exercise->update($request->validated());
-        return redirect()->route('exercises.index');
+        return redirect()->route('exercises.index')->with('success', 'Exercise updated successfully');
     }
 
     /**
@@ -93,7 +93,7 @@ class ExerciseController extends Controller
     {
         Storage::delete('public/exercises_models/' . $exercise->model_path);
         $exercise->delete();
-        return redirect()->route('exercises.index');
+        return redirect()->route('exercises.index')->with('success', 'Exercise deleted successfully');
     }
 
     /**

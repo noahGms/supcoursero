@@ -40,7 +40,7 @@ class ExerciseFileStatusController extends Controller
     public function store(ExerciseFileStatusRequest $request): RedirectResponse
     {
         ExerciseFileStatus::create($request->validated());
-        return redirect()->route('exercise-file-statuses.index');
+        return redirect()->route('exercise-file-statuses.index')->with('success', 'Exercise file status created successfully.');
     }
 
     /**
@@ -64,7 +64,7 @@ class ExerciseFileStatusController extends Controller
     public function update(ExerciseFileStatusRequest $request, ExerciseFileStatus $exerciseFileStatus): RedirectResponse
     {
         $exerciseFileStatus->update($request->validated());
-        return redirect()->route('exercise-file-statuses.index');
+        return redirect()->route('exercise-file-statuses.index')->with('success', 'Exercise file status updated successfully.');
     }
 
     /**
@@ -76,6 +76,6 @@ class ExerciseFileStatusController extends Controller
     public function destroy(ExerciseFileStatus $exerciseFileStatus): RedirectResponse
     {
         $exerciseFileStatus->delete();
-        return redirect()->route('exercise-file-statuses.index');
+        return redirect()->route('exercise-file-statuses.index')->with('success', 'Exercise file status deleted successfully.');
     }
 }

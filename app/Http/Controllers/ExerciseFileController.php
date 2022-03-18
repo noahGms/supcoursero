@@ -33,7 +33,7 @@ class ExerciseFileController extends Controller
             'exercise_file_status_id' => ExerciseFileStatus::STATUS_NOT_SUBMITTED,
         ]);
 
-        return redirect()->back();
+        return redirect()->back()->with('success', 'File uploaded successfully');
     }
 
     /**
@@ -46,7 +46,7 @@ class ExerciseFileController extends Controller
     {
         Storage::delete('public/exercise_files/' . $exerciseFile->path);
         $exerciseFile->delete();
-        return redirect()->route('home.index');
+        return redirect()->route('home.index')->with('success', 'File deleted successfully');
     }
 
     /**

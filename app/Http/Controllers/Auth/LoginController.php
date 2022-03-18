@@ -30,7 +30,7 @@ class LoginController extends Controller
         if (Auth::attempt($credentials, $request->filled('remember_me'))) {
             $request->session()->regenerate();
 
-            return redirect()->route('home.index');
+            return redirect()->route('home.index')->with('success', 'Welcome back ' . Auth::user()->name . ' !');
         }
 
         return back()->withErrors(['email' => 'These credentials do not match our records.']);
