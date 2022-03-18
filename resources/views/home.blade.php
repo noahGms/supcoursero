@@ -79,7 +79,7 @@
             @if($exerciseFiles->isEmpty())
                 <tr>
                     <td colspan="4" class="py-3 text-center">
-                        <div class="bg-indigo-700 border text-white px-4 py-3 rounded relative" role="alert">
+                        <div class="bg-indigo-400 border text-white px-4 py-3 rounded relative" role="alert">
                             <strong class="font-bold">No uploads found.</strong>
                         </div>
                     </td>
