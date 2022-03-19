@@ -33,6 +33,7 @@ Route::group(['middleware' => 'auth'], function () {
 
         Route::resource('exercise-file-statuses', App\Http\Controllers\Settings\ExerciseFileStatusController::class)->except(['show']);
 
+        Route::post('/users/{user}/toggle-admin', [App\Http\Controllers\Settings\UserController::class, 'toggleAdmin'])->name('users.toggle-admin');
         Route::resource('users', App\Http\Controllers\Settings\UserController::class)->only(['index', 'destroy']);
     });
 

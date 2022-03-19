@@ -30,10 +30,18 @@
                     <td class="px-4 py-3 text-sm leading-5 text-gray-500">{{ $user->id }}</td>
                     <td class="px-4 py-3 text-sm leading-5 text-gray-900">{{ $user->name }}</td>
                     <td class="px-4 py-3 text-sm leading-5 text-gray-900">{{ $user->email }}</td>
-                    <td class="px-4 py-3 text-sm leading-5 text-gray-500">
+                    <td class="px-4 py-3 text-sm leading-5 text-gray-500 flex items-center">
                         @if($user->is_god)
                             <span class="text-black">No actions is authorized</span>
                         @else
+                        <form method="POST" action="{{route('users.toggle-admin', $user->id)}}" class="inline-flex">
+                            @csrf
+                            <div class="relative inline-block w-10 mr-2 align-middle select-none transition duration-200 ease-in">
+                                <input onchange="form.submit()" type="checkbox" {{$user->is_admin ? 'checked' : ''}} name="is_admin" id="is_admin" class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 appearance-none cursor-pointer"/>
+                                <label for="is_admin" class="toggle-label block overflow-hidden h-6 rounded-full bg-gray-300 cursor-pointer"></label>
+                            </div>
+                            <label for="is_admin" class="text-gray-700 self-center">Toggle admin</label>
+                        </form>
                         <form class="inline-flex ml-2" action="{{route('users.destroy', $user->id)}}" method="post">
                             @csrf
                             @method('DELETE')
