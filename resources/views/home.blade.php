@@ -72,6 +72,7 @@
                 <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100">Name</th>
                 <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100">Exercise</th>
                 <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100">Status</th>
+                <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100">Rating</th>
                 <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100 rounded-tr rounded-br">Actions</th>
             </tr>
             </thead>
@@ -90,10 +91,11 @@
                     <td class="px-4 py-3 text-sm leading-5 text-gray-900">{{ $file->name }}</td>
                     <td class="px-4 py-3 text-sm leading-5 text-gray-900">{{ $file->exercise->name }}</td>
                     <td class="px-4 py-3 text-sm leading-5 text-gray-900">
-                        <span class="px-1 py-1 rounded" style="background-color: {{$file->status->color}};">
-                            {{ $file->status->color }}
+                        <span class="px-1 py-1 rounded uppercase" style="background-color: {{$file->status->color}};">
+                            {{ $file->status->name }}
                         </span>
                     </td>
+                    <td class="px-4 py-3 text-sm leading-5 text-gray-900">{{ $file->rating }}</td>
                     <td class="px-4 py-3 text-sm leading-5 text-gray-900">
                         <a href="{{route('exercise-files.download', $file->id)}}">
                             <i class="fa-solid fa-download"></i>
