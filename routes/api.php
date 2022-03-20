@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::group([], function () {
-    Route::post('courses-by-language', [\App\Http\Controllers\Api\ApiController::class, 'getCoursesByLanguage']);
-    Route::post('exercises-by-course', [\App\Http\Controllers\Api\ApiController::class, 'getExercisesByCourse']);
-    Route::post('exercise-files/{exerciseFile}/set-rating', [\App\Http\Controllers\Api\ApiController::class, 'setRatingToExerciseFile']);
+    Route::post('courses-by-language', [\App\Http\Controllers\Api\ApiController::class, 'getCoursesByLanguage'])->name('api.courses-by-language');
+    Route::post('exercises-by-course', [\App\Http\Controllers\Api\ApiController::class, 'getExercisesByCourse'])->name('api.exercises-by-course');
+    Route::post('exercise-files/{exerciseFile}/set-rating', [\App\Http\Controllers\Api\ApiController::class, 'setRatingToExerciseFile'])->name('api.exercise-files.set-rating');
 });
