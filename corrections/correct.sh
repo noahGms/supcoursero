@@ -37,7 +37,7 @@ for dir in */; do
 
             # send to api the rating for this file
             curl -X POST -H "Content-Type: application/json" -d \
-                '{"rating":"'$rating'"}' "http://127.0.0.1:8000/api/exercise-files/$id/set-rating"; \
+                '{"rating":"'$rating'"}' "http://172.16.37.145/api/exercise-files/$id/set-rating"; \
         fi
     done
 

@@ -116,7 +116,7 @@
         async function handleLanguageSelection() {
             let language_id = document.getElementById('language_id').value
 
-            const {data} = await window.axios.post({{route('api.courses-by-language')}}, {
+            const {data} = await window.axios.post('{{route('api.courses-by-language')}}', {
                 language_id
             })
 
@@ -135,7 +135,7 @@
         async function handleCourseSelection() {
             const course_id = document.getElementById('course_id').value
 
-            const {data} = await window.axios.post({{route('api.exercises-by-course')}}, {
+            const {data} = await window.axios.post('{{route('api.exercises-by-course')}}', {
                 course_id
             })
 
